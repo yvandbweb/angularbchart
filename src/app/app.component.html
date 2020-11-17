@@ -1,0 +1,23 @@
+        <div class="page-container">
+            <div class="content-wrap">
+                <div class="row1">                        
+                    <div class="angular">An Angular Chart generator</div>
+                    <ul>
+                      <li class="tmp">
+                        <a routerLink="/"><u>Graph1</u></a>
+                      </li>
+                      <li  class="tmp">
+                        <a routerLink="/graph2"><u>Graph2</u></a>
+                      </li>
+                    </ul>                
+                </div> 
+                <div>
+                    <router-outlet></router-outlet>
+                </div>
+            </div>
+            <footer class="fixed-bottom">
+              <div class="footer-copyright text-center py-3">© {{yy}} Copyright:
+                ydbweb.com
+              </div>
+            </footer>   
+        </div>

@@ -1,0 +1,20 @@
+<div class="row centered">    
+    <div class="items">
+        <app-elements 
+            [setMain]="maindataele"
+            (handleChangeElementName)="handleChangeElementName($event)"
+            (handleChangeElements)="handleChangeElements($event)"
+            (resetChangeElements)="resetChangeElements()"
+        ></app-elements>
+    </div>
+</div>
+<div class="row centered">    
+    <div class="items" *ngIf='maindata.length>0'>
+        <app-barchart 
+            [options]="options"
+            [setMain]="maindata"  
+            (handleChangeOptions)="handleChangeOptions($event)"
+            (handleChangeElementsData)="handleChangeElementsData($event)"
+        ></app-barchart>
+    </div>
+</div>

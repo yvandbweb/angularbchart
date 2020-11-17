@@ -1,0 +1,108 @@
+<div class="chart"> 
+    <div class='topchart'>
+        <div class='colorpicks'>    
+            <div class="colorsketchmain2 colorsketchmain"> 
+                <div class='colorfontsbg'>Font color </div>
+                <div class="clickersketch2 clickersketch button" (click)="showcolor('fontcolor')" *ngIf="colorshow!='fontcolor'" style="background-color:{{options.fontcolor}}"></div>
+                <div (click)="colorCancel('fontcolor')" *ngIf="colorshow=='fontcolor';" class="button three"><<</div>
+                <div (click)="handleChangeCompleteSaveColor('fontcolor')" *ngIf="colorshow=='fontcolor'" class="button four">ok</div>                  
+                <color-sketch class="colorsketch2" width="150px" *ngIf="colorshow=='fontcolor';" color="{{options.fontcolor}}" (onChangeComplete)="handleChangeComplete($event,'handleChangeComplete')"></color-sketch>
+                <div class="clear"></div>
+            </div>   
+            <div class="clear"></div>
+            <div class="colorsketchmain2 colorsketchmain"> 
+                <div class='colorfontsbg'>Background color </div>
+                <div class="clickersketch2 clickersketch button" (click)="showcolor('backgroundcolor')" *ngIf="colorshow!='backgroundcolor'" style="background-color:{{options.backgroundcolor}}"></div>
+                <div (click)="colorCancel('backgroundcolor')" *ngIf="colorshow=='backgroundcolor';" class="button three"><<</div>
+                <div (click)="handleChangeCompleteSaveColor('backgroundcolor')" *ngIf="colorshow=='backgroundcolor'" class="button four">ok</div>                  
+                <color-sketch class="colorsketch2" width="150px" *ngIf="colorshow=='backgroundcolor';" color="{{options.backgroundcolor}}" (onChangeComplete)="handleChangeComplete($event,'handleChangeComplete')"></color-sketch>
+                <div class="clear"></div>
+            </div> 
+            <div class="clear"></div>
+            <div class="colorsketchmain2 colorsketchmain"> 
+                <div class='colorfontsbg'>Line color </div>
+                <div class="clickersketch2 clickersketch button" (click)="showcolor('linecolor')" *ngIf="colorshow!='linecolor'" style="background-color:{{options.linecolor}}"></div>
+                <div (click)="colorCancel('linecolor')" *ngIf="colorshow=='linecolor';" class="button three"><<</div>
+                <div (click)="handleChangeCompleteSaveColor('linecolor')" *ngIf="colorshow=='linecolor'" class="button four">ok</div>                  
+                <color-sketch class="colorsketch2" width="150px" *ngIf="colorshow=='linecolor';" color="{{options.linecolor}}" (onChangeComplete)="handleChangeComplete($event,'handleChangeComplete')"></color-sketch>
+                <div class="clear"></div>
+            </div>    
+            <div class="clear"></div>
+        </div>
+        <div class="radios">
+            <div class="radiotext">bottom </div><input type="radio" class="radiobut" name="legend" value="bottom" [checked]="options.legendType === 'bottom'" (change)="changelegendType('bottom')"/>
+            <div class="radiotext">top </div><input type="radio" class="radiobut" name="legend" value="top" [checked]="options.legendType === 'top'" (change)="changelegendType('top')"/>
+            <div class="clear"></div>
+            <div class="radiotext">left </div><input type="radio" class="radiobut" name="legend" value="left" [checked]="options.legendType === 'left'"  (change)="changelegendType('left')"/>
+            <div class="radiotext">right </div><input type="radio" class="radiobut" name="legend" value="right" [checked]="options.legendType === 'right'" (change)="changelegendType('right')"/>
+            <div class="clear"></div>
+        </div>
+        <div class="responsiveclear"></div>
+        <div class="intwidth">
+            <div class="txtinitwidth">Interval</div>
+            <div class="clear"></div>
+            <div class="plusminwidth">
+                <div class="plus" [ngClass]="{'plusmindeactive': intervalplus == 'max'}" (click)="changeintervalplus()">+</div>
+                <div class="min" [ngClass]="{'plusmindeactive': intervalplus == 'min'}" (click)="changeintervalmin()">-</div>
+                <div class="clear"></div>
+            </div>
+        </div>
+        <div class="intwidth">
+            <div class="txtinitwidth">Bar width</div>
+            <div class="clear"></div>
+            <div class="plusminwidth">
+                <div class="plus" [ngClass]="{'plusmindeactive': widthplus == 'max'}" (click)="changewidthplus()">+</div>
+                <div class="min" [ngClass]="{'plusmindeactive': widthplus == 'min'}" (click)="changewidthmin()">-</div>
+                <div class="clear"></div>
+            </div>
+        </div>   
+        <div class="tworadioss">
+            <div class="toptwo">Y axis n°</div>
+            <div class="radiostwo">
+                <div class="inputstwo">yes</div>
+                <input type="radio" class="inputstworad" value="bottom" [checked]="options.yaxis === 'yes'" (change)="changeYaxis('yes')"/>
+                <div class="clear"></div>
+                <div class="inputstwo">no</div>    
+                <input type="radio" class="inputstworad" value="bottom" [checked]="options.yaxis === 'no'" (change)="changeYaxis('no')"/>
+                <div class="clear"></div>
+            </div>
+        </div>   
+        <div class="tworadioss">
+            <div class="toptwo">Bar n°</div>
+            <div class="radiostwo">
+                <div class="inputstwo">yes</div>
+                <input type="radio" class="inputstworad" value="bottom" [checked]="options.baraxis === 'yes'" (change)="changeBaraxis('yes')"/>
+                <div class="clear"></div>
+                <div class="inputstwo">no</div>    
+                <input type="radio" class="inputstworad" value="bottom" [checked]="options.baraxis === 'no'" (change)="changeBaraxis('no')"/>
+                <div class="clear"></div>
+            </div>
+        </div>
+        <div class="responsiveclear"></div>
+        <div class="updown">
+            <div class="sortup" (click)="sortUp()">Sort up</div>
+            <div class="clear"></div>
+            <div class="sortdown" (click)="sortDown()">Sort down</div>
+            <div class="clear"></div>
+        </div>
+        <div class="togglevalue2">
+            size: 
+        </div>
+        <mat-slider 
+            class="matsiderbarwidth"
+            tickInterval="4"
+            min="4"
+            max="40" 
+            value="{{options.sizeheight}}"
+            (change)="onSliderChangeSh($event)"  
+          >
+        </mat-slider>                              
+        <div class="clear"></div>
+    </div>
+    <div class="clear"></div>
+    <div id="canvas-container">
+        <canvas #canvas id="canvas" width="550" [ngStyle]="{'height': '100%'}" ></canvas>
+    </div>
+    <div class="clear"></div>
+</div>
+<div class="clear"></div>

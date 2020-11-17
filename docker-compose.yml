@@ -1,0 +1,8 @@
+angular2020:
+  image: angularbarren
+  ports:
+    - "8585:4200"
+  volumes:
+    - "/home/yvan/projects/angularbchart:/home/angularbchart"
+    - "/home/angularbchart/node_modules"
+  tty: true

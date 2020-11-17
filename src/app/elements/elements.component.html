@@ -1,0 +1,57 @@
+<div class="topgrey">   
+   <input type="button" class="buttontop black" value="reset" (click)="resetAll()"/>
+   <input type="button" class="buttontop download" *ngIf="maindataele.length!=0;" value="download bar chart png" (click)="downloadimage()"/>
+   <input type="button" *ngIf="topaddelement==-1;" class="buttontop blue" value="add an element" (click)="showElementForm()">
+   <input type="button" *ngIf="topaddelement==1;" class="buttontop darkorange" value="hide input" (click)="hideElementForm()">   
+   <input type="text" *ngIf="topaddelement==1 && maindataele.length<totalsteps;" [(ngModel)]="elementinput"  class="buttontop txt"  maxlength="20"/>
+   <input type="button" *ngIf="topaddelement==1 && maindataele.length<totalsteps;" class="buttontop cyan" value="save an element" (click)="saveElementForm()">
+   <div class="redmessage" *ngIf="topsaveelement==1 && topaddelement==1 && maindataele.length>=totalsteps;">Only {{totalsteps}} elements possible</div>
+   <div class="clear"></div>
+</div>
+<div class="clear"></div>
+<div class="itemsform">
+    <div class="countotthree" *ngFor="let parts of maindataelesplit; let ip = index" >
+        <div *ngFor="let item1 of parts; let i = index">
+            <div class="arrowud">
+                <img *ngIf="i+ip!=0" src="./assets/images/up.png"  (click)="handleChangeElementArrowUp(i+lng[ip])"/>
+            </div>
+            <div class="arrowud">
+                <img *ngIf="i+lng[ip]<totlength-1" src="./assets/images/down.png" (click)="handleChangeElementArrowUp(i+lng[ip]+1)" />                     
+            </div>  
+            <input type="text" (keyup)="setValue($event,i+lng[ip])" type="text"  class="inputd"  value="{{item1.name}}" maxlength="20">
+            <div  class="deleteitem" (click)="DeleteElement(i+lng[ip])"></div>
+            <div class="clear"></div>
+            <div class="secondline1">
+                <div (click)="showvalue(i+lng[ip],item1.value)" class="button but1" *ngIf="valueshow!=i+lng[ip];">set value</div>
+                <div (click)="hidevalue(i+lng[ip])" class="button but1" *ngIf="valueshow==i+lng[ip];">hide value</div>
+            </div>
+            <div class="secondline2">
+                current: {{item1.value}}
+            </div> 
+            <div class="colorsketchmain"> 
+                <div class="clickersketch button" (click)="showcolor(i+lng[ip])" *ngIf="colorshow!=i+lng[ip];" style="background-color:{{item1.color}}"></div>
+                <div (click)="colorCancel(i+lng[ip])" *ngIf="colorshow==i+lng[ip];" class="button three"><<</div>
+                <div (click)="handleChangeCompleteSaveColor(i+lng[ip])" *ngIf="colorshow==i+lng[ip];" class="button four">ok</div>                  
+                <color-sketch class="colorsketch" width="150px" *ngIf="colorshow==i+lng[ip];" color="{{item1.color}}" (onChangeComplete)="handleChangeComplete($event,i+lng[ip])"></color-sketch>
+            </div>
+            <div class="clear"></div>
+            <div class="togglevalue" *ngIf="valueshow==i+lng[ip];" >
+                <mat-slider 
+                    class="matsider"
+                    thumbLabel
+                    [displayWith]="formatLabel"
+                    tickInterval="1"
+                    min="1"
+                    max="100" 
+                    value="{{item1.value}}"
+                    (change)="onSliderChange($event,i+lng[ip])"  
+                  >
+                </mat-slider>  
+                <div (click)="onSliderChangeSetValue(i+lng[ip])" class="button two">ok</div>
+                <div class="clear"></div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
+<div class="clear"></div>
