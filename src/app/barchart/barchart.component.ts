@@ -99,9 +99,9 @@ export class BarchartComponent implements OnInit {
     }
 
     changeintervalplus(){
-        const canwidth=this.maindata.length*(this.options.barwidth+this.options.interval+1);
+        const canwidth=this.maindata.length*(parseInt(this.options.barwidth)+parseInt(this.options.interval)+1);
         if (canwidth<=500){
-            this.options.interval=this.options.interval+1;
+            this.options.interval=parseInt(this.options.interval)+1;
             this.intervalplus=-1;
             this.widthplus=-1;
             this.draw();
@@ -112,8 +112,8 @@ export class BarchartComponent implements OnInit {
     }
     
     changeintervalmin(){
-        if (this.options.interval-1>=0){
-            this.options.interval=this.options.interval-1;
+        if (parseInt(this.options.interval)-1>=0){
+            this.options.interval=parseInt(this.options.interval)-1;
             this.intervalplus=-1;
             this.widthplus=-1;
             this.draw();
@@ -124,9 +124,9 @@ export class BarchartComponent implements OnInit {
     }
 
     changewidthplus(){
-        const canwidth=this.maindata.length*(this.options.barwidth+1+this.options.interval);
+        const canwidth=this.maindata.length*(parseInt(this.options.barwidth)+1+parseInt(this.options.interval));
         if (canwidth<=500){
-            this.options.barwidth=this.options.barwidth+1;
+            this.options.barwidth=parseInt(this.options.barwidth)+1;
             this.intervalplus=-1;
             this.widthplus=-1;
             this.draw();
@@ -138,8 +138,8 @@ export class BarchartComponent implements OnInit {
     }
     
     changewidthmin(){
-        if (this.options.barwidth-1>=15){
-            this.options.barwidth=this.options.barwidth-1;
+        if (parseInt(this.options.barwidth)-1>=15){
+            this.options.barwidth=parseInt(this.options.barwidth)-1;
             this.intervalplus=-1;
             this.widthplus=-1;
             this.draw();
@@ -197,7 +197,7 @@ export class BarchartComponent implements OnInit {
 
         let fontsize;
         let addhigrectest;
-        if (this.options.sizeheight<20){
+        if (parseInt(this.options.sizeheight)<20){
             fontsize="12px";
             addhigrectest=22;
         }else{
@@ -238,10 +238,10 @@ export class BarchartComponent implements OnInit {
 
       
       
-      this.heightbox=200-(40-this.options.sizeheight);
-      this.canheight=230-(40-this.options.sizeheight);
+      this.heightbox=200-(40-parseInt(this.options.sizeheight));
+      this.canheight=230-(40-parseInt(this.options.sizeheight));
 
-      this.canwidth=this.maindata.length*(this.options.barwidth+this.options.interval)-(10-this.options.sizeheight);
+      this.canwidth=this.maindata.length*(parseInt(this.options.barwidth)+parseInt(this.options.interval))-(10-parseInt(this.options.sizeheight));
 
 
         let canvasheight = this.canheight+160;
@@ -281,7 +281,7 @@ export class BarchartComponent implements OnInit {
   
         this.ctx.fillStyle = this.options.backgroundcolor;
         this.ctx.fillRect(0, 0, canvas.width, canvas.height);
-        let interval=this.options.interval;
+        let interval=parseInt(this.options.interval);
 
         let x=startx;
         this.ctx.translate(0, 0);
@@ -317,19 +317,19 @@ export class BarchartComponent implements OnInit {
 
         this.triangle2(this.ctx,x+this.canwidth+23,starty+this.canheight+8);
 
-        x=x+this.options.interval;
+        x=x+parseInt(this.options.interval);
         let calcheight;
         for (let i=0;i<this.maindata.length;i++){
             calcheight=((this.canheight-50)/100)*this.maindata[i].value;
             this.ctx.fillStyle = this.maindata[i].color;
-            this.ctx.fillRect(x, starty+this.canheight+15, this.options.barwidth,  -calcheight);
+            this.ctx.fillRect(x, starty+this.canheight+15, parseInt(this.options.barwidth),  -calcheight);
             this.ctx.font = "13px Arial black";
             this.ctx.fillStyle = this.options.fontcolor;
 
             if (this.options.baraxis=="yes"){
-                this.ctx.fillText(this.maindata[i].value ,x+this.options.barwidth/2, starty+this.canheight-calcheight+13);               
+                this.ctx.fillText(this.maindata[i].value ,x+parseInt(this.options.barwidth)/2, starty+this.canheight-calcheight+13);               
             }
-            x=x+this.options.barwidth+this.options.interval;
+            x=x+parseInt(this.options.barwidth)+parseInt(this.options.interval);
         }
 
 

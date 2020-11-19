@@ -16,7 +16,7 @@ export class MainComponent implements OnInit {
     id;
     optionssave;
     datasave;
-
+    isLoading;
 
     constructor(private DatasourceService: DatasourceService) { 
 
@@ -26,21 +26,31 @@ export class MainComponent implements OnInit {
       this.loaddata();
     }
 
-    loaddata(){
+    loaddata(){   
+       
        this.id=this.graphnumber;
        this.optionssave="options"+this.id;
        this.datasave="datasave"+this.id;
+       this.isLoading=true;
        if (localStorage.getItem(this.optionssave)==undefined){
-            let tmp=this.DatasourceService.getData(this.graphnumber);
-            localStorage.setItem(this.optionssave, JSON.stringify(tmp.options));
-            localStorage.setItem(this.datasave, JSON.stringify(tmp.data)); 
+            this.DatasourceService.getData(this.graphnumber).subscribe((res : any[])=>{
+                localStorage.setItem(this.optionssave, JSON.stringify(res["options"]));
+                localStorage.setItem(this.datasave, JSON.stringify(res["data"])); 
+                this.setData();
+                this.isLoading=false;
+            }); 
             
+        }else{
+            this.setData();
+            this.isLoading=false;
         }
 
+    }
+
+    setData(){
         this.maindata=JSON.parse(localStorage.getItem(this.datasave));
         this.maindataele=this.maindata;
         this.options=JSON.parse(localStorage.getItem(this.optionssave));
-
     }
 
     handleChangeElementName(data){     
@@ -70,8 +80,6 @@ export class MainComponent implements OnInit {
     handleChangeElementsData(data){
        this.maindata=data;  
        this.maindataele=data;
-
-       console.log(data);
        this.setLocal();
        this.loaddata();
     }

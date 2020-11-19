@@ -27,6 +27,8 @@ export class ElementsComponent implements OnInit {
     constructor() {this.maindataele=this.maindata;console.log("b"); }
 
 
+
+
     @Input()
       set setMain(maindataele: any) {
       this.maindataele=maindataele;
