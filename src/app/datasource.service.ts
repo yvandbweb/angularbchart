@@ -5,8 +5,8 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class DatasourceService {
-    baseUrl:string = "https://www.ydbweb.com/laravelweb/";    
-    //baseUrl:string = "http://192.168.178.42:8383/laravelweb/";  
+    //baseUrl:string = "http://localhost:8585/laravelweb/public/index.php/";
+    baseUrl:string = "https://ydbweb.com/laravelweb/public/index.php/";
     baseUrlposts:string = "serv";
 
   constructor(private httpClient : HttpClient) {}
