@@ -1,7 +1,8 @@
 @import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
 
 html {
-
+    overflow: -moz-scrollbars-vertical; 
+    overflow-y: scroll;
 }
 
 body {
@@ -17,7 +18,7 @@ body {
 
 ul.pagination {
   display: inline-block;
-
+  
 }
 
 .pagination li {
@@ -49,7 +50,7 @@ ul.pagination {
    float: none;
    display: inline-block;
    text-align: left;
-   font-size: 13px;
+   font-size: 13px; 
    margin-bottom:20px;
 }
 
@@ -70,7 +71,7 @@ footer {
   position: absolute;
   bottom: 0;
   width: 100%;
-  height: 50px;
+  height: 50px;  
   text-align:center;
   background-color: #0000c0;
   color:white;
@@ -92,7 +93,7 @@ footer {
     color:white;
     display: inline-block;
     margin-right:30px;
-
+    
 }
 
 .row1 ul li a{
@@ -124,7 +125,7 @@ footer {
    margin-left: -125px;
    position: absolute;
    top: 50%;
-   width: 250px;
+   width: 250px;   
    z-index:100000000000;
 }
 
@@ -138,9 +139,9 @@ footer {
     width:100%;
     max-width:950px;
     min-height:315px;
-    margin:0 auto;
-    margin-top: 0;
-    margin-bottom: 0 !important;
+    margin:0 auto;  
+    margin-top: 0;    
+    margin-bottom: 0 !important;    
     padding-bottom: 0 !important;
 }
 .itemsform{
@@ -153,7 +154,7 @@ footer {
 .countotthree{
     float:left;
     width:300px;
-
+   
 }
 
 .countotthree2{
@@ -188,7 +189,7 @@ footer {
   height:30px;
   background: url(~src/assets/images/cross.jpg);
   background-repeat: no-repeat;
-  background-size: auto;
+  background-size: auto; 
   margin-top:2px;
   cursor:pointer;
 }
@@ -301,13 +302,13 @@ footer {
 }
 
 .but1{
-
+    
     width:80px;
     height:15px;
 }
 
 .buttontop{
-    float:left;
+    float:left;   
     margin:8px;
 }
 
@@ -368,7 +369,7 @@ footer {
     height:20px;
     margin:8px;
     line-height: 20px;
-
+    
 }
 
 #canvas-container {
@@ -455,7 +456,7 @@ footer {
 }
 
 .chart{
-    margin-bottom:10px;
+    margin-bottom:10px;    
 }
 
 .colorsketch2{
@@ -467,7 +468,7 @@ footer {
 }
 
 .matsider2{
-    float:left;
+    float:left;    
     width:150px !important;
      padding:0px !important;
      padding:0px !important;
@@ -502,7 +503,7 @@ footer {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    outline: 0;
+    outline: 0;    
 }
 
 
@@ -522,7 +523,7 @@ footer {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    outline: 0;
+    outline: 0;    
 }
 
 .plusmindeactive{
@@ -536,16 +537,16 @@ footer {
 }
 
 .toptwo{
-   float:left;
+   float:left; 
 }
 
 .toptwo{
-   float:left;
+   float:left; 
    margin-right:3px;
 }
 
 .inputstwo{
-   float:left;
+   float:left; 
    width:25px;
 }
 
@@ -557,16 +558,16 @@ footer {
 .updown{
     float:left;
     margin-right:10px;
-    margin-top:3px;
+    margin-top:3px;    
 }
 
 .sortup{
     float:left;
     width:75px;
-    height:20px;
+    height:20px; 
     background-color:blue;
     color:white;
-    margin-bottom:1px;
+    margin-bottom:1px;  
     margin-top:1px;
     text-align: center;
     cursor:pointer;
@@ -581,9 +582,9 @@ footer {
 .sortdown{
     float:left;
     width:75px;
-    height:20px;
+    height:20px; 
     background-color:green;
-    color:white;
+    color:white;  
     text-align: center;
     cursor:pointer;
     border:1px solid white;
@@ -599,8 +600,3 @@ footer {
     margin-left:15px;
 }
 
-.ul1 li {
-    display: inline;
-    margin-right: 20px;
-    font-size: 12px;
-}
